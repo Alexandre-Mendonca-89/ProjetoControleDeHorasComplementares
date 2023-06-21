@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Sistema Detran</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous"/>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+	   			<h1 class="panel-title aw-titulo-panel">Pesquisa de placas</h1>	   			
+	   		</div>
+	   	</div>
+	   	
+	   	<div class="panel-body">
+	   		<form method="POST" class="form-horizontal" th:action="@{/buscaPlaca}" th:object="${carro}">
+	   			<div class="form-group">
+	   				<div class="col-sm-4">
+	   					<div class="input-group">
+	   						<input type="hidden" th:field="*{id}"></input>
+	   						<input type="hidden" th:field="*{nome}"></input>
+	   						<input type="hidden" th:field="*{marca}"></input>	   					
+	   						<input class="form-control" placeholder="Qual placa você está procurando?"
+	   								autofocus="autofocus" th:field="*{placa}"></input>
+	   						<span class="input-group-btn">
+	   							<button type="submit" class="btn btn-default">
+	   								<i class="glyphicon glyphicon-search"></i>
+	   							</button>
+	   						</span>
+	   					</div>
+	   				</div>
+	   			</div>
+	   		</form>
+	   		
+	   		<div class="table-responsive">
+	   		<table class="table table-bordered table-striped">
+	   			<thead>
+	   				<tr>
+	   					<th class="text-center col-md-1">id</th>
+	   					<th class="text-center col-md-2">Carro</th>
+	   					<th class="text-right col-md-2">Marca</th>
+	   					<th class="text-center col-md-2">Placa</th>
+	   					<th class="col-md-1"></th>
+	   				</tr>
+	   			</thead>
+	   			<tbody>
+	   				<tr th:each="carro : ${carros}">
+	   					<td class="text-center" th:text="${carro.id}" ></td>	   					
+	   					<td class="text-center" th:text="${carro.nome}" ></td>
+	   					<td class="text-right" th:text="${carro.marca}" ></td>
+	   					<td class="text-center" th:attr="${carro.placa}"></td>
+	   					<td class="text-center">
+	   						<a class="btn btn-link btn-xs" th:href="" 
+	   							title="Adicionar multa" rel="tooltip" data-placement="top">
+	   							<span class="glyphicon glyphicon-pencil"></span>
+	   						</a>
+	   						   						
+	   					</td>
+	   				</tr>
+	   			
+	   				<tr>
+	   					<td colspan="6" th:if="${#lists.isEmpty(carros)}">Nenhuma placa foi encontrada</td>
+	   				</tr>
+	   			</tbody>
+	   		</table>
+	   		</div>
+	   		
+	   	</div>
+	   	
+	</div>
+
+</html>

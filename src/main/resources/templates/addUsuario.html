@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Sistema De Cadastro de Horas Complementares</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous"/>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+		<h1 class="panel-title">Adicionar Usuário</h1>
+		</div>
+		<div class="panel-body">
+		
+			<form class="form" method="POST" th:object="${usuario}" th:action="@{/addUsuario}" style="margin: 20px 0">
+				<div form-row>
+					<div class="form-group">				
+						<input type="hidden" class="form-control"	th:field="*{id}" size="5" readonly="readonly"/>
+						<div class="form-group  col-md-2">
+							<label>Nome</label>
+							<input type="text" class="form-control"	th:field="*{nome}" placeholder="Nome"/>
+						</div>
+						<div class="form-group  col-md-2">	
+							<label>CPF</label>
+							<input type="text" class="form-control"	th:field="*{cpf}" placeholder="Ex: 00100200304"/>
+						</div>
+						<div class="form-group  col-md-2">	
+							<label>Login</label>
+							<input type="text" class="form-control"	th:field="*{Login}" placeholder="Ex: aluno fulano"/>
+						</div>
+						<div class="form-group  col-md-2">	
+							<label>Senha</label>
+							<input type="text" class="form-control"	th:field="*{senha}" placeholder="Ex: aluno@fulano123"/>
+						</div>
+						<div class="form-group  col-md-2">	
+							<label>Data Nascimento</label>
+							<input type="text" class="form-control"	th:field="*{dataNascimento}" placeholder="Ex: 01/02/2001"/>
+						</div>
+						<div class="form-group  col-md-2">	
+							<label>Perfil</label>
+							<input type="text" class="form-control"	th:field="*{perfil}" placeholder="Ex: Administrador"/>
+						</div>						
+						
+						<div class="form-group col-md-6">
+							<button type="submit"	class="btn btn-primary">Salvar</button>
+						</div>	
+					</div>
+				</div>	
+			</form>
+		
+		</div>
+	</div>
+</body>
+</html>

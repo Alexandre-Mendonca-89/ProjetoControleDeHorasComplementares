@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Sistema Detran</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous"/>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+		<h1 class="panel-title">Listagem de Multas</h1>
+		</div>
+		<div class="panel-body">
+					
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Ano</th>
+						<th>Cidade</th>
+						<th>Carro</th>
+						<th>Tipo Infração</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="multa : ${multas}">
+						<td th:text="${multa.id}"></td>
+						<td th:text="${multa.ano}"></td>
+						<td th:text="${multa.cidade}"></td>	
+						<td th:text="${multa.carro.placa}"></td>
+						<td th:text="${multa.tipoInfracao.descricao}"></td>
+						
+						<td>
+							<a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${carro.id})}">Editar</a>	
+							<a class="delete btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${carro.id})}">Excluir</a>										
+						</td>					
+					</tr>			
+				
+				</tbody>				
+				
+			</table>
+			
+			
+		</div>
+		<div class="panel-footer">
+			<a class="btn btn-sm btn-success" th:href="@{/addMulta}" >Nova multa</a>
+		</div>
+	</div>
+</body>
+</html>

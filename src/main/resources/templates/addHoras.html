@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Sistema De Cadastro de Horas Complementares</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous"/>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+		<h1 class="panel-title">Adicionar Horas Complementares</h1>
+		</div>
+		<div class="panel-body">
+		
+			<form class="form" method="POST" th:object="${horas}" th:action="@{/addHoras}" style="margin: 20px 0">
+				<div form-row>
+					<div class="form-group">				
+						<input type="hidden" class="form-control"	th:field="*{id}" size="5" readonly="readonly"/>
+						<div class="form-group  col-md-4">
+							<label>Curso</label>
+							<input type="text" class="form-control"	th:field="*{curso}" placeholder="Curso"/>
+						</div>
+						<div class="form-group  col-md-2">	
+							<label>Hora Contemplada</label>
+							<input type="text" class="form-control"	th:field="*{horaContemplada}" placeholder="Hora Contemplada"/>
+						</div>
+						<div class="form-group  col-md-2">	
+							<label>Certificado</label>
+							<input type="text" class="form-control"	th:field="*{certificado}" placeholder="Certificado"/>
+						</div>
+						<div class="form-group  col-md-2">	
+							<label>Data do Curso</label>
+							<input type="text" class="form-control"	th:field="*{dataCurso}" placeholder="Data do Curso"/>
+						</div>
+						<div class="form-group  col-md-2">							
+							<label>Usuário</label>
+							<select class="form-control" th:field="*{usuario}" required>
+								
+								<option th:each="usuario : ${usuarios}"
+										th:value="${usuario.id}"
+										th:utext="${usuario.nome}"/>
+							</select>
+						</div>
+						<div class="form-group  col-md-2">		
+							<label>Categoria do Curso Válido</label>
+							<select class="form-control" th:field="*{cursoValido}" required>						
+								<option th:each="cursoValido : ${cursosValidos}"
+										th:value="${cursoValido.id}"
+										th:utext="${cursoValido.categoriaCurso}"/>
+							</select>
+						</div>
+						
+						
+						<div class="form-group col-md-6">
+							<button type="submit"	class="btn btn-primary">Salvar</button>
+						</div>	
+					</div>
+				</div>	
+			</form>
+		
+		</div>		
+	</div>
+</body>
+</html>

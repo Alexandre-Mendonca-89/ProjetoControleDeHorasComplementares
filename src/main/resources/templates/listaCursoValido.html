@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Sistema De cadasro de Horas Complementares</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous"/>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="alert alert-success"
+					th:if="${!#strings.isEmpty(mensagem)}">
+				<span th:text="${mensagem}">
+					Curso Válido salvo com sucesso!!!
+				</span>
+			</div>
+	
+	
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+		<h1 class="panel-title">Listagem de Cursos Válidos</h1>
+		</div>
+		<div class="panel-body">
+					
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Categoria do Curso</th>
+						<th>Total de Horas Válida</th>
+						<th>Total</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cursoValido : ${cursosValidos}">
+						<td th:text="${cursoValido.id}"></td>
+						<td th:text="${cursoValido.categoriaCurso}"></td>
+						<td th:text="${cursoValido.totalHoraValida}"></td>	
+						<td th:text="${cursoValido.total}"></td>
+						<td>
+							<a class="btn btn-sm btn-primary" th:href="@{/editCursoValido/{id}(id=${cursoValido.id})}">Editar</a>	
+							<a class="delete btn btn-sm btn-danger" th:href="@{/deleteCursoValido/{id}(id=${cursoValido.id})}">Excluir</a>											
+						</td>					
+					</tr>			
+				
+				</tbody>				
+				
+			</table>
+			
+			
+		</div>
+		<div class="panel-footer">
+			<a class="btn btn-sm btn-success" th:href="@{/addCursoValido}" >Novo Curso Válido</a>
+		</div>
+	</div>
+</body>
+</html>

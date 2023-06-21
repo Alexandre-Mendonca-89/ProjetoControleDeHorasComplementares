@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Sistema De cadasro de Horas Complementares</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous"/>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+		<h1 class="panel-title">Listagem de Horas Complementares</h1>
+		</div>
+		<div class="panel-body">
+					
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Curso</th>
+						<th>Hora Contemplada</th>
+						<th>Certificado</th>	
+						<th>Data do Curso</th>	
+						<th>Nome Usuário</th>	
+						<th>CPF Usuário</th>	
+						<th>Data de Nascimento do Usuário</th>		
+						<th>Categoria Curso&ccedil;&atilde;o</th>	
+						<th>Total Horas Válidas</th>
+						<th>Total</th>			
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="hora : ${horas}">
+						<td th:text="${hora.id}"></td>
+						<td th:text="${hora.curso}"></td>
+						<td th:text="${hora.horaContemplada}"></td>	
+						<td th:text="${hora.certificado}"></td>
+						<td th:text="${hora.dataCurso}"></td>
+						<td th:text="${hora.usuario.nome}"></td>
+						<td th:text="${hora.usuario.cpf}"></td>
+						<td th:text="${hora.usuario.dataNascimento}"></td>
+						<td th:text="${hora.cursoValido.categoriaCurso}"></td>	
+						<td th:text="${hora.cursoValido.totalHoraValida}"></td>
+						<td th:text="${hora.cursoValido.total}"></td>					
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>	
+						<td></td>
+						<td></td>
+						<td></td>	
+						<td><b>Total</b></td>
+						<td th:text="${total}"></td>					
+					</tr>
+									
+				</tbody>				
+				
+			</table>		
+		
+		
+	</div>
+</body>
+</html>
