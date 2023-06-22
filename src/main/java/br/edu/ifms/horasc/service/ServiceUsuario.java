@@ -45,10 +45,10 @@ public class ServiceUsuario {
 		List<Horas> m = usuarios.findById(id).get().getHoras();
 		double total = 0;
 		for (Horas horas : m) {
-			total += horas.getCursoValido().getTotal();			
+			total += horas.getCursoValido().getTotalHoraValida();			
 		}
 		return total;
-	}	
+	}
 	public List<Usuario> buscarNome(Usuario usuario){
 		return usuarios.findByNome(usuario.getNome());
 	}

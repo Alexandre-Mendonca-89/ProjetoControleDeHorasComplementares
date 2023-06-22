@@ -48,7 +48,10 @@ xmlns:th="http://www.thymeleaf.org">
 						</div>
 						<div class="form-group  col-md-2">	
 							<label>Perfil</label>
-							<input type="text" class="form-control"	th:field="*{perfil}" placeholder="Ex: Administrador"/>
+							<select name="perfil" type="text" class="form-control"	th:field="*{perfil}" placeholder="Ex: Administrador">
+						        <option value="Administrador">Administrador</option>
+						        <option value="Estudante">Estudante</option>
+						    </select>
 						</div>						
 						
 						<div class="form-group col-md-6">

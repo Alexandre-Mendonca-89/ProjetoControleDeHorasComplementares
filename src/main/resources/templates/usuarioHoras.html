@@ -6,7 +6,7 @@ xmlns:th="http://www.thymeleaf.org">
 	<meta http-equiv="Content-Type"
 	content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width" />
-	<title>Sistema De cadasro de Horas Complementares</title>
+	<title>Sistema De cadastro de Horas Complementares</title>
 	<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
@@ -35,8 +35,7 @@ xmlns:th="http://www.thymeleaf.org">
 						<th>CPF Usuário</th>	
 						<th>Data de Nascimento do Usuário</th>		
 						<th>Categoria Curso&ccedil;&atilde;o</th>	
-						<th>Total Horas Válidas</th>
-						<th>Total</th>			
+						<th>Total Horas Válidas</th>			
 					</tr>
 				</thead>
 				<tbody>
@@ -50,8 +49,7 @@ xmlns:th="http://www.thymeleaf.org">
 						<td th:text="${hora.usuario.cpf}"></td>
 						<td th:text="${hora.usuario.dataNascimento}"></td>
 						<td th:text="${hora.cursoValido.categoriaCurso}"></td>	
-						<td th:text="${hora.cursoValido.totalHoraValida}"></td>
-						<td th:text="${hora.cursoValido.total}"></td>					
+						<td th:text="${hora.cursoValido.totalHoraValida}"></td>					
 					</tr>
 					<tr>
 						<td></td>
@@ -59,8 +57,10 @@ xmlns:th="http://www.thymeleaf.org">
 						<td></td>	
 						<td></td>
 						<td></td>
+						<td></td>
 						<td></td>	
-						<td><b>Total</b></td>
+						<td></td>	
+						<td><b>Total de Horas Válidas</b></td>
 						<td th:text="${total}"></td>					
 					</tr>
 									
