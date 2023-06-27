@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Sistema De Cadastro de Atividades Complementares</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous"/>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+		<h1 class="panel-title">Validação de Atividades Complementares</h1>
+		</div>
+		<div class="panel-body"><table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Curso</th>
+						<th>Hora Contemplada</th>
+						<th>Certificado</th>
+						<th>Nome Usuario</th>
+						<th>CPF Usuario</th>
+						<th>Data Curso</th>
+						<th>Categoria Curso</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="hora : ${horas}">
+						<td th:text="${hora.id}"></td>
+						<td th:text="${hora.curso}"></td>
+						<td th:text="${hora.horaContemplada}"></td>	
+						<td th:text="${hora.certificado}"></td>
+						<td th:text="${hora.usuario.nome}"></td>
+						<td th:text="${hora.usuario.cpf}"></td>
+						<td th:text="${hora.dataCurso}"></td>	
+						<td th:text="${hora.cursoValido.categoriaCurso}"></td>
+						
+						<td>
+							<a class="btn btn-sm btn-primary" th:href="@{/editHoras/{id}(id=${hora.id})}">Editar</a>	
+							<a class="delete btn btn-sm btn-danger" th:href="@{/deleteHoras/{id}(id=${hora.id})}">Excluir</a>										
+						</td>
+					</tr>			
+				
+				</tbody>				
+				
+			</table>
+		
+			<form class="form" method="POST" th:object="${horas}" th:action="@{/addHoras}" style="margin: 20px 0">
+				<div form-row>
+					<div class="form-group">				
+						<input type="hidden" class="form-control"	th:field="*{id}" size="5" readonly="readonly"/>
+						
+						<div class="form-group  col-md-2">		
+							<label></label>
+							<select class="form-control" th:field="*{validacaoHoras}" required>						
+								<option th:each="validacaoHoras : ${validacaoHoras}"
+										th:value="${validacaoHoras.id}"
+										th:utext="${validacaoHoras.categoriaCurso}"/>
+							</select>
+						</div>
+						
+						
+						<div class="form-group col-md-6">
+							<button type="submit"	class="btn btn-primary">Salvar</button>
+						</div>	
+					</div>
+				</div>	
+			</form>
+		
+		</div>		
+	</div>
+</body>
+</html>

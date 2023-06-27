@@ -31,7 +31,6 @@ xmlns:th="http://www.thymeleaf.org">
 	   						<input type="hidden" th:field="*{id}"></input>
 	   						<input type="hidden" th:field="*{nome}"></input>
 	   						<input type="hidden" th:field="*{cpf}"></input>
-	   						<input type="hidden" th:field="*{login}"></input>
 	   						<input type="hidden" th:field="*{dataNascimento}"></input>		
 	   						<input class="form-control" placeholder="Qual nome você está procurando?"
 	   								autofocus="autofocus" th:field="*{nome}"></input>
@@ -74,7 +73,7 @@ xmlns:th="http://www.thymeleaf.org">
 	   				</tr>
 	   			
 	   				<tr>
-	   					<td colspan="6" th:if="${#lists.isEmpty(carros)}">Nenhum nome foi encontrado</td>
+	   					<td colspan="6" th:if="${#lists.isEmpty(usuarios)}">Nenhum nome foi encontrado</td>
 	   				</tr>
 	   			</tbody>
 	   		</table>

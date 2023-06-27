@@ -34,19 +34,16 @@ xmlns:th="http://www.thymeleaf.org">
 			<table class="table">
 				<thead>
 					<tr>
-						<th>ID</th>
 						<th>Categoria do Curso</th>
-						<th>Total de Horas Válida</th>
-						<th>Total</th>
-						<th></th>
+						<th>Total Válido Categoria</th>
+						<th>Editar/Excluir</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="cursoValido : ${cursosValidos}">
-						<td th:text="${cursoValido.id}"></td>
+						<td hidden th:text="${cursoValido.id}"></td>
 						<td th:text="${cursoValido.categoriaCurso}"></td>
-						<td th:text="${cursoValido.totalHoraValida}"></td>	
-						<td th:text="${cursoValido.total}"></td>
+						<td th:text="${cursoValido.totalHoraValida}"></td>
 						<td>
 							<a class="btn btn-sm btn-primary" th:href="@{/editCursoValido/{id}(id=${cursoValido.id})}">Editar</a>	
 							<a class="delete btn btn-sm btn-danger" th:href="@{/deleteCursoValido/{id}(id=${cursoValido.id})}">Excluir</a>											

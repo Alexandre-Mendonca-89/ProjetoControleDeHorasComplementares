@@ -26,30 +26,27 @@ xmlns:th="http://www.thymeleaf.org">
 			<table class="table">
 				<thead>
 					<tr>
-						<th>ID</th>
 						<th>Curso</th>
-						<th>Hora Contemplada</th>
 						<th>Certificado</th>	
 						<th>Data do Curso</th>	
 						<th>Nome Usuário</th>	
 						<th>CPF Usuário</th>	
 						<th>Data de Nascimento do Usuário</th>		
-						<th>Categoria Curso&ccedil;&atilde;o</th>	
-						<th>Total Horas Válidas</th>			
+						<th>Categoria Curso&ccedil;&atilde;o</th>
+						<th>Hora Contemplada</th>			
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="hora : ${horas}">
-						<td th:text="${hora.id}"></td>
+						<td hidden th:text="${hora.id}"></td>
 						<td th:text="${hora.curso}"></td>
-						<td th:text="${hora.horaContemplada}"></td>	
 						<td th:text="${hora.certificado}"></td>
 						<td th:text="${hora.dataCurso}"></td>
 						<td th:text="${hora.usuario.nome}"></td>
 						<td th:text="${hora.usuario.cpf}"></td>
 						<td th:text="${hora.usuario.dataNascimento}"></td>
-						<td th:text="${hora.cursoValido.categoriaCurso}"></td>	
-						<td th:text="${hora.cursoValido.totalHoraValida}"></td>					
+						<td th:text="${hora.cursoValido.categoriaCurso}"></td>
+						<td th:text="${hora.horaContemplada}"></td>	
 					</tr>
 					<tr>
 						<td></td>
@@ -59,8 +56,7 @@ xmlns:th="http://www.thymeleaf.org">
 						<td></td>
 						<td></td>
 						<td></td>	
-						<td></td>	
-						<td><b>Total de Horas Válidas</b></td>
+						<td><b>Total de Horas Válidas Contempladas</b></td>
 						<td th:text="${total}"></td>					
 					</tr>
 									
