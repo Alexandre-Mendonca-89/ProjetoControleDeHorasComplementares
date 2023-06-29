@@ -6,27 +6,28 @@ xmlns:th="http://www.thymeleaf.org">
 	<meta http-equiv="Content-Type"
 	content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width" />
-	<title>Sistema De cadastro de Horas Complementares</title>
+	<title>Sistema De cadasro de Horas Complementares</title>
 	<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
 	crossorigin="anonymous"/>
 </head>
+
+
 <body>
 
 	<div th:replace="fragments/header :: header"></div>
 	
-	<div class="alert alert-success"
+			<div class="alert alert-success"
 					th:if="${!#strings.isEmpty(mensagem)}">
 				<span th:text="${mensagem}">
-					Curso Válido salvo com sucesso!!!
+					Usuário salvo com sucesso!!!
 				</span>
 			</div>
-	
-	
+			
 	<div class="panel panel-default" style="margin: 10px">
 		<div class="panel-heading">
-		<h1 class="panel-title">Listagem de Cursos Válidos</h1>
+		<h1 class="panel-title">Listagem de Usuários</h1>
 		</div>
 		<div class="panel-body">
 					
@@ -34,19 +35,26 @@ xmlns:th="http://www.thymeleaf.org">
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Categoria do Curso</th>
-						<th>Total Válido Categoria</th>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>Data de Nascimento</th>
+						<th>Perfil</th>
 						<th>Editar/Excluir</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="cursoValido : ${cursosValidos}">
-						<td hidden th:text="${cursoValido.id}"></td>
-						<td th:text="${cursoValido.categoriaCurso}"></td>
-						<td th:text="${cursoValido.totalHoraValida}"></td>
+					<tr th:each="usuario : ${usuarios}">
+						<td th:text="${usuario.id}"></td>
+						<td th:text="${usuario.nome}"></td>
+						<td th:text="${usuario.cpf}"></td>
+						<td th:text="${usuario.dataNascimento}"></td>
+						<td th:text="${usuario.perfil}"></td>
 						<td>
-							<a class="btn btn-sm btn-primary" th:href="@{/editCursoValido/{id}(id=${cursoValido.id})}">Editar</a>	
-							<a class="delete btn btn-sm btn-danger" th:href="@{/deleteCursoValido/{id}(id=${cursoValido.id})}">Excluir</a>											
+							<a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${usuario.id})}">Editar</a>	
+							<a class="delete btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${usuario.id})}">Excluir</a>	
+							<a class="btn btn-sm btn-warning" th:href="@{/usuarioHoras/{id}(id=${usuario.id})}">Horas</a>				
 						</td>					
 					</tr>			
 				
@@ -54,10 +62,9 @@ xmlns:th="http://www.thymeleaf.org">
 				
 			</table>
 			
-			
 		</div>
 		<div class="panel-footer">
-			<a class="btn btn-sm btn-success" th:href="@{/addCursoValido}" >Cadastrar Novo Curso Válido</a>
+			<a class="btn btn-sm btn-success" th:href="@{/addUsuario}" >Cadastrar Novo Usuário</a>
 		</div>
 	</div>
 </body>

@@ -29,17 +29,21 @@ public class ControllerHoras {
 	// --------------------------------------------------------------
 	// Aqui começam as rotas das Horas
 	// --------------------------------------------------------------
+	public ModelAndView login() {
+		ModelAndView mv = new ModelAndView("/home/login");
+		return mv;		
+	}
 	
 	@GetMapping("/listaHoras")
 	public ModelAndView listar() {
-		ModelAndView mv = new ModelAndView("listaHoras");
+		ModelAndView mv = new ModelAndView("/estudante/listaHoras");
 		mv.addObject("horas", serviceHoras.findAll());
 		return mv;
 	}
 	
 	@GetMapping("/addHoras")
 	public ModelAndView addHoras() {		
-		ModelAndView mv = new ModelAndView("addHoras");
+		ModelAndView mv = new ModelAndView("/estudante/addHoras");
 		mv.addObject(new Horas());	
 		mv.addObject("usuarios", serviceUsuario.findAll());
 		mv.addObject("cursosValidos", serviceCursoValido.findAll());
@@ -61,7 +65,7 @@ public class ControllerHoras {
 	}
 	@GetMapping("/editHoras/{id}")
 	public ModelAndView editHoras (@PathVariable ("id") Long id) {
-		ModelAndView mv = new ModelAndView("addHoras");
+		ModelAndView mv = new ModelAndView("/estudante/addHoras");
 		mv.addObject("hora", serviceHoras.findById(id));
 		//mv.addObject("usuarios", serviceHoras.findById(id).get().getUsuario());
 		//mv.addObject("cursoValido", serviceHoras.findById(id).get().getCursoValido());
@@ -74,13 +78,13 @@ public class ControllerHoras {
 	
 	@GetMapping("/buscaNome")
 	public ModelAndView addBuscaNome() {
-		ModelAndView mv = new ModelAndView("buscaNome");
+		ModelAndView mv = new ModelAndView("/administrador/buscaNome");
 		mv.addObject(new Usuario());
 		return mv;
 	}
 	@PostMapping("/buscaNome")
 	public ModelAndView buscaNome(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("buscaNome");
+		ModelAndView mv = new ModelAndView("/administrador/buscaNome");
 		mv.addObject("usuarios", serviceUsuario.buscarNome(usuario));
 		return mv;
 	}

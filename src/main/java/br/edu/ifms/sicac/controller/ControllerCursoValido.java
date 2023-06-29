@@ -26,14 +26,14 @@ public class ControllerCursoValido {
 	
 	@GetMapping("/listaCursoValido")
 	public ModelAndView listaCursoValido() {
-		ModelAndView mv = new ModelAndView("listaCursoValido");
+		ModelAndView mv = new ModelAndView("/administrador/listaCursoValido");
 		mv.addObject("cursosValidos", serviceCursoValido.findAll());		
 		return mv;
 	}
 	
 	@GetMapping("/addCursoValido")
 	public ModelAndView addCursoValido() {		
-		ModelAndView mv = new ModelAndView("addCursoValido");
+		ModelAndView mv = new ModelAndView("/administrador/addCursoValido");
 		mv.addObject(new CursoValido());		
 		return mv;
 	}
@@ -54,7 +54,7 @@ public class ControllerCursoValido {
 	
 	@GetMapping("/editCursoValido/{id}")
 	public ModelAndView editCursoValido (@PathVariable ("id") Long id) {
-		ModelAndView mv = new ModelAndView("addCursoValido");
+		ModelAndView mv = new ModelAndView("/administrador/addCursoValido");
 		mv.addObject("cursosValidos", serviceCursoValido.findById(id));
 		return mv;
 	}

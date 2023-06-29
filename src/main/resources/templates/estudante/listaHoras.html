@@ -5,7 +5,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<title>Sistema De cadastro de Horas Complementares</title>
+<title>Sistema De Controle de Atividades Complementares</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
@@ -53,18 +53,15 @@
 
 						<td><a class="btn btn-sm btn-primary" th:href="@{/editHoras/{id}(id=${hora.id})}">Editar</a> 
 							<a class="delete btn btn-sm btn-danger" th:href="@{/deleteHoras/{id}(id=${hora.id})}">Excluir</a></td>
-						<td>
-							<!-- <a class="btn btn-sm btn-primary" th:href="@{/editValidarHoras/{id}(id=${validarHoras.id})}">Validar</a> -->
-						</td>
+							<!-- <a th:href="@{/usuarioHoras/{id}(id=${usuario.id})}">Lista Horas</a> -->
+						
 					</tr>
-
 				</tbody>
-
+				
 			</table>
 		</div>
 		<div class="panel-footer">
-			<a class="btn btn-sm btn-success" th:href="@{/addHoras}">Cadastrar
-				Nova Hora Complementar</a>
+			<a class="btn btn-sm btn-success" th:href="@{/addHoras}">Cadastrar Nova Hora Complementar</a>
 		</div>
 	</div>
 </body>

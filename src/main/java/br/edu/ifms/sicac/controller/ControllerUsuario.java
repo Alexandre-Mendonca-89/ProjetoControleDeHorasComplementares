@@ -29,10 +29,6 @@ public class ControllerUsuario {
 		ModelAndView mv = new ModelAndView("/home/index");
 		return mv;		
 	}
-	public ModelAndView Login() {
-		ModelAndView mv = new ModelAndView("/home/login");
-		return mv;		
-	}
 	
 	// --------------------------------------------------------------
 	// Aqui começam as rotas dos Usuarios 
@@ -41,14 +37,14 @@ public class ControllerUsuario {
 	@GetMapping("/listaUsuario")
 	
 	public ModelAndView listaUsuario() {
-		ModelAndView mv = new ModelAndView("listaUsuario");
+		ModelAndView mv = new ModelAndView("administrador/listaUsuario");
 		mv.addObject("usuarios", serviceUsuario.findAll());		
 		return mv;
 	}
 	
 	@GetMapping("/addUsuario")
 	public ModelAndView add() {		
-		ModelAndView mv = new ModelAndView("addUsuario");
+		ModelAndView mv = new ModelAndView("administrador/addUsuario");
 		mv.addObject(new Usuario());		
 		return mv;
 	}
@@ -64,19 +60,19 @@ public class ControllerUsuario {
 	public String delete (@PathVariable ("id") Long id) {
 		if (serviceUsuario.usuarioHoras(id).size()==0)
 			serviceUsuario.deleteById(id);		
-		return "redirect:/listaUsuario";
+		return "redirect:/administrador/listaUsuario";
 	}
 	
 	@GetMapping("/edit/{id}")
 	public ModelAndView edit (@PathVariable ("id") Long id) {
-		ModelAndView mv = new ModelAndView("addUsuario");
+		ModelAndView mv = new ModelAndView("/administrador/addUsuario");
 		mv.addObject("usuario", serviceUsuario.findById(id));
 		return mv;
 	}
 	
 	@GetMapping("/usuarioHoras/{id}")
 	public ModelAndView usuarioHoras (@PathVariable ("id") Long id) {
-		ModelAndView mv = new ModelAndView("usuarioHoras");
+		ModelAndView mv = new ModelAndView("/administrador/usuarioHoras");
 		mv.addObject("horas", serviceUsuario.usuarioHoras(id));
 		mv.addObject("total", serviceUsuario.usuarioHorasTotal(id));
 		return mv;
